@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:1.6.3-alpine
 
 MAINTAINER Billy Ray Teves <billyteves@gmail.com>
 

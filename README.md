@@ -1,5 +1,6 @@
-# golang-with-glide
-Docker image that uses the latest Golang and Glide as Package Dependency
+# alpine-golang-glide
 
-GoLang 1.6.3-alpine
-Glide Latest
+Docker image that uses the latest and stable Golang and Glide as Package Dependency
+
+Golang 1.6.3-alpine
+Glide latest

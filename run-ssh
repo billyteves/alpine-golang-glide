@@ -4,6 +4,7 @@ SSH_TMP_DIR="/tmp/ssh"
 SSH_DIR="${HOME}/.ssh"
 
 mkdir -p $SSH_DIR
+chmod 755 $SSH_DIR
 
 function ssh-agent-with-keyscan {
   eval `ssh-agent -s` && ssh-add && ssh-keyscan bitbucket.org github.com >> ${HOME}/.ssh/known_hosts

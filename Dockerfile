@@ -13,9 +13,10 @@ RUN apk add --no-cache --virtual --update \
 
     git \
     make \
-    go \
     bzr \
     gcc \
+    g++ \
+    go \
  
     # Cleanup
     

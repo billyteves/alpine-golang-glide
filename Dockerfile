@@ -14,10 +14,24 @@ RUN apk add --no-cache --virtual --update \
     git \
     make \
     bzr \
-    gcc \
-    g++ \
+    build-base \
+    musl-dev \
+    musl-utils \
+    tar \
     go \
- 
+
+    # Add musl libs
+   
+    && curl -L http://www.musl-libc.org/releases/musl-1.1.15.tar.gz \
+    && tar -xvf musl-1.1.15.tar.gz && cd musl-1.1.15 \
+    && ./configure \
+    && make && make install \
+    && cd .. \
+    && rm musl-1.1.15.tar.gz \
+    && rm -Rf musl-1.1.15 \
+    && rm -Rf musl.1.1.15 \
+    && rm -Rf musl.1.1.15
+
     # Cleanup
     
     && rm -rf /var/cache/apk/* \

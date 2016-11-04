@@ -7,7 +7,11 @@ ENV PATH 	$GOPATH/bin:/usr/local/go/bin:$PATH
 
 ADD ./run-ssh /usr/local/bin/run-ssh
 
-RUN apk add --no-cache --virtual --update \
+RUN mkdir -p /etc/apk \
+    && echo "http://alpine.gliderlabs.com/alpine/edge/main" >> /etc/apk/repositories \
+    && echo "http://alpine.gliderlabs.com/alpine/edge/community" >> /etc/apk/repositories \
+
+    && apk add --no-cache --virtual --update \
 
     # Install important apks 
 
@@ -19,6 +23,7 @@ RUN apk add --no-cache --virtual --update \
     musl-utils \
     tar \
     go \
+    glide \
 
     # Add musl libs
    
@@ -45,7 +50,7 @@ RUN apk add --no-cache --virtual --update \
 
     && chmod -R 777 $GOPATH 
 
-RUN curl https://glide.sh/get | sh
+#RUN curl https://glide.sh/get | sh
 
 WORKDIR /go/src/app
 

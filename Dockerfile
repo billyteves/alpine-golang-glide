@@ -15,7 +15,7 @@ RUN apk add --no-cache --virtual --update \
     make \
     go \
     bzr \
-    gcc \
+    musl-dev \
  
     # Cleanup
     

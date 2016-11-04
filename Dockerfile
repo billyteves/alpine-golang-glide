@@ -24,8 +24,8 @@ RUN apk add --no-cache --virtual --update \
     # Add musl libs
    
     && curl --create-dirs -sSLo /tmp/musl-1.1.15.tar.gz http://www.musl-libc.org/releases/musl-1.1.15.tar.gz \
-    && cd /tmp
-    && tar -xvf musl-1.1.15.tar.gz 
+    && cd /tmp \
+    && tar -xvf musl-1.1.15.tar.gz \
     && cd musl-1.1.15 \
     && ./configure \
     && make && sudo make install \
@@ -33,7 +33,7 @@ RUN apk add --no-cache --virtual --update \
     && rm musl-1.1.15.tar.gz \
     && rm -Rf musl-1.1.15 \
     && rm -Rf musl.1.1.15 \
-    && rm -Rf musl.1.1.15
+    && rm -Rf musl.1.1.15 \
 
     # Cleanup
     

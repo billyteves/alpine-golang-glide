@@ -7,7 +7,9 @@ ENV PATH 	$GOPATH/bin:/usr/local/go/bin:$PATH
 
 ADD ./run-ssh /usr/local/bin/run-ssh
 
-RUN mkdir -p /etc/apk \
+RUN apk update \
+    && apk upgrade \
+    && mkdir -p /etc/apk \
     && echo "http://alpine.gliderlabs.com/alpine/edge/main" >> /etc/apk/repositories \
     && echo "http://alpine.gliderlabs.com/alpine/edge/community" >> /etc/apk/repositories \
 

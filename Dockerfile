@@ -19,7 +19,7 @@ RUN apk update \
 
     git \
     make \
-    bzr \
+#    bzr \
     build-base \
     musl-dev \
     musl-utils \

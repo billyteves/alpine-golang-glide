@@ -19,7 +19,7 @@ RUN apk update \
 
     git \
     make \
-#    bzr \
+    bzr \
     build-base \
     musl-dev \
     musl-utils \
@@ -29,12 +29,12 @@ RUN apk update \
 
     # Add musl libs
    
-    && curl --create-dirs -sSLo /tmp/musl-1.1.15.tar.gz http://www.musl-libc.org/releases/musl-1.1.15.tar.gz \
-    && cd /tmp \
-    && tar -xvf musl-1.1.15.tar.gz \
-    && cd musl-1.1.15 \
-    && ./configure \
-    && make && make install \
+#    && curl --create-dirs -sSLo /tmp/musl-1.1.15.tar.gz http://www.musl-libc.org/releases/musl-1.1.15.tar.gz \
+#    && cd /tmp \
+#    && tar -xvf musl-1.1.15.tar.gz \
+#    && cd musl-1.1.15 \
+#    && ./configure \
+#    && make && make install \
 
     # Cleanup
     

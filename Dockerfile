@@ -23,7 +23,7 @@ RUN apk update \
     build-base \
     musl-dev \
     musl-utils \
-    tar \
+#    tar \
     go \
     glide \
 

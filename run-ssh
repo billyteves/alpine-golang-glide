@@ -7,7 +7,7 @@ SSH_ID_RSA="$SSH_DIR/id_rsa"
 mkdir -p $SSH_DIR
 
 function ssh-agent-with-keyscan {
-  eval `ssh-agent -s` && ssh-add && ssh-keyscan bitbucket.org github.com >> ${HOME}/.ssh/known_hosts
+  eval `ssh-agent -s` && ssh-add && ssh-keyscan bitbucket.org github.com >> ${HOME}/.ssh/known_hosts 2>&1
 }
 
 function copy-ssh {

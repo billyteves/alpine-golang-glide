@@ -7,8 +7,8 @@ ENV PATH 	$GOPATH/bin:/usr/local/go/bin:$PATH
 
 ADD ./run-ssh /usr/local/bin/run-ssh
 
-RUN apk update \
-    && apk upgrade \
+RUN apk update --no-cache \
+    && apk upgrade --no-cache \
     && apk add --no-cache --virtual --update \
 
     # Install important apks 
@@ -19,25 +19,15 @@ RUN apk update \
     build-base \
     musl-dev \
     musl-utils \
-#    tar \
     go \
     
-    # Added Edge
+    # Added Edge to Install Glide
 
     && mkdir -p /etc/apk \
     && echo "http://alpine.gliderlabs.com/alpine/edge/main" >> /etc/apk/repositories \
     && echo "http://alpine.gliderlabs.com/alpine/edge/community" >> /etc/apk/repositories \
     && apk add --no-cache --virtual --update \
-    && glide \
-
-    # Add musl libs
-   
-#    && curl --create-dirs -sSLo /tmp/musl-1.1.15.tar.gz http://www.musl-libc.org/releases/musl-1.1.15.tar.gz \
-#    && cd /tmp \
-#    && tar -xvf musl-1.1.15.tar.gz \
-#    && cd musl-1.1.15 \
-#    && ./configure \
-#    && make && make install \
+    glide \
 
     # Cleanup
     
@@ -54,8 +44,6 @@ RUN apk update \
     # CHMOD
 
     && chmod -R 777 $GOPATH 
-
-#RUN curl https://glide.sh/get | sh
 
 WORKDIR /go/src/app
 

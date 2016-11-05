@@ -9,10 +9,6 @@ ADD ./run-ssh /usr/local/bin/run-ssh
 
 RUN apk update \
     && apk upgrade \
-    && mkdir -p /etc/apk \
-    && echo "http://alpine.gliderlabs.com/alpine/edge/main" >> /etc/apk/repositories \
-    && echo "http://alpine.gliderlabs.com/alpine/edge/community" >> /etc/apk/repositories \
-
     && apk add --no-cache --virtual --update \
 
     # Install important apks 
@@ -25,7 +21,14 @@ RUN apk update \
     musl-utils \
 #    tar \
     go \
-    glide \
+    
+    # Added Edge
+
+    && mkdir -p /etc/apk \
+    && echo "http://alpine.gliderlabs.com/alpine/edge/main" >> /etc/apk/repositories \
+    && echo "http://alpine.gliderlabs.com/alpine/edge/community" >> /etc/apk/repositories \
+    && apk add --no-cache --virtual --update \
+    && glide \
 
     # Add musl libs
    

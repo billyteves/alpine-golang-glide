@@ -1,4 +1,4 @@
-FROM billyteves/alpine:3.4.0
+FROM billyteves/alpine:3.5.0
 
 MAINTAINER Billy Ray Teves <billyteves@gmail.com>
 

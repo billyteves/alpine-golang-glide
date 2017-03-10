@@ -3,7 +3,7 @@
 Docker image that uses the latest and stable Golang and Glide as Package Dependency
 
 Golang 1.6.3-alpine
-Glide latest
+Glide 0.12.3-r0
 
 Build-and-Run on the fly. This image also supports cMake for Makefile
 

@@ -20,12 +20,6 @@ RUN apk update --no-cache \
     musl-dev \
     musl-utils \
     go \
-    
-    # Added Edge to Install Glide
-
-    && mkdir -p /etc/apk \
-    && echo "http://alpine.gliderlabs.com/alpine/v3.5/community" >> /etc/apk/repositories \
-    && apk add --no-cache --virtual --update \
     glide \
 
     # Cleanup

@@ -1,4 +1,4 @@
-FROM billyteves/alpine:latest
+FROM billyteves/alpine:3.4.0
 
 MAINTAINER Billy Ray Teves <billyteves@gmail.com>
 
@@ -24,8 +24,7 @@ RUN apk update --no-cache \
     # Added Edge to Install Glide
 
     && mkdir -p /etc/apk \
-    && echo "http://alpine.gliderlabs.com/alpine/edge/main" >> /etc/apk/repositories \
-    && echo "http://alpine.gliderlabs.com/alpine/edge/community" >> /etc/apk/repositories \
+    && echo "http://alpine.gliderlabs.com/alpine/v3.5/community" >> /etc/apk/repositories \
     && apk add --no-cache --virtual --update \
     glide \
 

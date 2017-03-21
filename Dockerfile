@@ -5,6 +5,8 @@ MAINTAINER Billy Ray Teves <billyteves@gmail.com>
 ENV GOLANG_VERSION      1.7.5
 ENV GOLANG_SRC_URL      https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
 ENV GOLANG_SRC_SHA256   4e834513a2079f8cbbd357502cccaac9507fd00a1efe672375798858ff291815
+ENV GOPATH              /go
+ENV PATH                $GOPATH/bin:/usr/local/go/bin:$PATH
 
 # ssh for glide
 COPY ./run-ssh /usr/local/bin/run-ssh
@@ -28,7 +30,7 @@ RUN set -ex \
     musl-dev \
 
     # Compile Golang 1.7.5 and cleanup
-
+    && go version \
     && export GOROOT_BOOTSTRAP="$(go env GOROOT)" \
     && curl -L "$GOLANG_SRC_URL" > golang.tar.gz \
     && echo "$GOLANG_SRC_SHA256  golang.tar.gz" | sha256sum -c - \
@@ -39,12 +41,8 @@ RUN set -ex \
     && patch -p2 -i /17847.patch \
     && ./make.bash \
     && rm -rf /*.patch \
-    && apk del .build-deps
+    && apk del .build-deps \
 
-ENV GOPATH              /go
-ENV PATH                $GOPATH/bin:/usr/local/go/bin:$PATH
-
-RUN \
     # Make directories
 
     && mkdir -p $GOPATH/bin \

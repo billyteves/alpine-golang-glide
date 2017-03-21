@@ -49,7 +49,6 @@ RUN set -ex \
     && apk add --no-cache --virtual --update \
     git \
     make \
-    bzr \ 
     glide \
 
     # Make directories

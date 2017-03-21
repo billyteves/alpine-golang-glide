@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+SSH_TMP_DIR="/tmp/ssh"
+SSH_DIR="${HOME}/.ssh"
+SSH_ID_RSA="$SSH_DIR/id_rsa"
+
+mkdir -p $SSH_DIR
+
+function ssh-agent-with-keyscan {
+  eval `ssh-agent -s` && ssh-add && ssh-keyscan bitbucket.org github.com >> ${HOME}/.ssh/known_hosts 2>&1
+}
+
+function copy-ssh {
+  cp $SSH_TMP_DIR/id_rsa $SSH_ID_RSA
+  chmod 400 $SSH_ID_RSA
+}
+
+if [ -d "$SSH_TMP_DIR" ]; then
+  # Control will enter here if $DIRECTORY exists.
+  if [ ! -f $SSH_TMP_DIR/id_rsa ]; then
+    ssh-agent-with-keyscan
+  else
+    copy-ssh && ssh-agent-with-keyscan
+  fi
+else
+  ssh-agent-with-keyscan
+fi
+

@@ -16,7 +16,8 @@ COPY ./run-ssh /usr/local/bin/run-ssh
 # ./patch-files/17847.patch https://golang.org/issue/17847
 COPY ./patch-files /
 
-RUN apk add --no-cache ca-certificates \
+RUN set -ex \
+    && apk add --no-cache ca-certificates \
     && apk update --no-cache \
     && apk upgrade --no-cache \
     && apk add --no-cache --virtual --update .build-deps \

@@ -1,4 +1,4 @@
-FROM billyteves/alpine:3.4.0
+FROM billyteves/alpine:3.5.0
 
 MAINTAINER Billy Ray Teves <billyteves@gmail.com>
 
@@ -20,20 +20,7 @@ RUN apk update --no-cache \
     musl-dev \
     musl-utils \
     go \
-    
-    # Added Edge to Install Glide
-
-    && mkdir -p /etc/apk \
-    && echo "http://alpine.gliderlabs.com/alpine/v3.5/community" >> /etc/apk/repositories \
-    && apk add --no-cache --virtual --update \
     glide \
-
-    # Cleanup
-    
-    && rm -rf /var/cache/apk/* \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && chmod +x /usr/local/bin/run-ssh \
 
     # Make directories
 
@@ -42,7 +29,14 @@ RUN apk update --no-cache \
 
     # CHMOD
 
-    && chmod -R 777 $GOPATH 
+    && chmod -R 777 $GOPATH \
+
+    # Cleanup
+
+    && rm -rf /var/cache/apk/* \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && chmod +x /usr/local/bin/run-ssh
 
 WORKDIR /go/src/app
 

@@ -6,7 +6,7 @@ NOTE: `latest` docker tag is now deprecated and will no longer be maintained. Ki
 `latest` tag is equivalent to tag `1.0.0`
 
 
-OFFICIAL DOCKER TAGS with Application Versions: 
+OFFICIAL DOCKER TAGS WITH APPLICATION VERSIONS: 
 
 TAGS     | GoLang | Glide   | GIT    | Alpine Base
 ---      | ---    | ---     | ---    | ---

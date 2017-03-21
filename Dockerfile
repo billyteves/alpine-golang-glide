@@ -20,7 +20,7 @@ RUN set -ex \
     && apk add --no-cache ca-certificates \
     && apk update --no-cache \
     && apk upgrade --no-cache \
-    && apk add --no-cache --virtual --update .build-deps \
+    && apk add --no-cache --virtual .build-deps \
 
     # Install important apks
 

@@ -8,12 +8,14 @@ NOTE: `latest` docker tag is now deprecated and will no longer be maintained. Ki
 
 OFFICIAL DOCKER TAGS WITH APPLICATION VERSIONS: 
 
-TAGS     | GoLang | Glide   | GIT    | Alpine Base
----      | ---    | ---     | ---    | ---
-1.1.0    | 1.7.3  | 0.12.3  | 2.11.1 | 3.5
-1.0.0    | 1.6.3  | 0.12.3  | 2.8.3  | 3.4
-latest   | 1.6.3  | 0.12.3  | 2.8.3  | 3.4 
+Tags     | Golang | Glide   | GIT    | Make  | Alpine Base
+---      | ---    | ---     | ---    | ---   | ---
+1.1.1    | 1.7.5  | 0.12.3  | 2.11.1 | 4.2.1 | 3.5 
+1.1.0    | 1.7.3  | 0.12.3  | 2.11.1 | 4.2.1 | 3.5
+1.0.0    | 1.6.3  | 0.12.3  | 2.8.3  | 4.1.0 | 3.4
+latest   | 1.6.3  | 0.12.3  | 2.8.3  | 4.1.0 | 3.4
 
+* docker tagging is based on the golang upgrades.
 
 Build-and-Run on the fly. This image also supports cMake for Makefile
 

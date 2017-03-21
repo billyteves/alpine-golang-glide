@@ -28,9 +28,9 @@ RUN set -ex \
     make \
     gcc \
     musl-dev \
+    go \
 
     # Compile Golang 1.7.5 and cleanup
-    && go version \
     && export GOROOT_BOOTSTRAP="$(go env GOROOT)" \
     && curl -L "$GOLANG_SRC_URL" > golang.tar.gz \
     && echo "$GOLANG_SRC_SHA256  golang.tar.gz" | sha256sum -c - \

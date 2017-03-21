@@ -2,19 +2,17 @@ FROM billyteves/alpine:3.5.0
 
 MAINTAINER Billy Ray Teves <billyteves@gmail.com>
 
-ENV GOLANG_VERSION      1.7.5
+ENV GOLANG_VERSION      1.8
 ENV GOLANG_SRC_URL      https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
-ENV GOLANG_SRC_SHA256   4e834513a2079f8cbbd357502cccaac9507fd00a1efe672375798858ff291815
+ENV GOLANG_SRC_SHA256   406865f587b44be7092f206d73fc1de252600b79b3cacc587b74b5ef5c623596
 ENV GOPATH              /go
 ENV PATH                $GOPATH/bin:/usr/local/go/bin:$PATH
 
 # ssh for glide
 COPY ./run-ssh /usr/local/bin/run-ssh
 
-# Copy all the patch files
-# ./patch-files/no-pic.patch https://golang.org/issue/14851
-# ./patch-files/17847.patch https://golang.org/issue/17847
-COPY ./patch-files /
+# https://golang.org/issue/14851
+COPY ./patch-files/no-pic.patch /
 
 RUN set -ex \
     && apk add --no-cache ca-certificates \
@@ -24,13 +22,12 @@ RUN set -ex \
 
     # Install important apks for building go
 
-    git \
     make \
     gcc \
     musl-dev \
     go \
 
-    # Compile Golang 1.7.5 and cleanup
+    # Compile Golang 1.8 and cleanup
 
     && export GOROOT_BOOTSTRAP="$(go env GOROOT)" \
     && curl -L "$GOLANG_SRC_URL" > golang.tar.gz \
@@ -39,7 +36,6 @@ RUN set -ex \
     && rm golang.tar.gz \
     && cd /usr/local/go/src \
     && patch -p2 -i /no-pic.patch \
-    && patch -p2 -i /17847.patch \
     && ./make.bash \
     && rm -rf /*.patch \
     && apk del .build-deps \

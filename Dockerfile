@@ -31,6 +31,7 @@ RUN set -ex \
     go \
 
     # Compile Golang 1.7.5 and cleanup
+    
     && export GOROOT_BOOTSTRAP="$(go env GOROOT)" \
     && curl -L "$GOLANG_SRC_URL" > golang.tar.gz \
     && echo "$GOLANG_SRC_SHA256  golang.tar.gz" | sha256sum -c - \

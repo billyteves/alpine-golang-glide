@@ -22,7 +22,7 @@ RUN set -ex \
     && apk upgrade --no-cache \
     && apk add --no-cache --virtual .build-deps \
 
-    # Install important apks
+    # Install important apks for building go
 
     git \
     make \
@@ -31,7 +31,7 @@ RUN set -ex \
     go \
 
     # Compile Golang 1.7.5 and cleanup
-    
+
     && export GOROOT_BOOTSTRAP="$(go env GOROOT)" \
     && curl -L "$GOLANG_SRC_URL" > golang.tar.gz \
     && echo "$GOLANG_SRC_SHA256  golang.tar.gz" | sha256sum -c - \
@@ -43,6 +43,14 @@ RUN set -ex \
     && ./make.bash \
     && rm -rf /*.patch \
     && apk del .build-deps \
+
+    # Install needed apks
+
+    && apk add --no-cache --virtual --update \
+    git \
+    make \
+    bzr \ 
+    glide \
 
     # Make directories
 

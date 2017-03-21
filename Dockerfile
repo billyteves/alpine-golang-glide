@@ -9,13 +9,12 @@ ENV GOPATH	            /go
 ENV PATH 	            $GOPATH/bin:/usr/local/go/bin:$PATH
 
 # ssh for glide
-COPY ./files/run-ssh /usr/local/bin/run-ssh
+COPY ./run-ssh /usr/local/bin/run-ssh
 
-# https://golang.org/issue/14851
+# Copy all the patch files
+# ./patch-files/no-pic.patch https://golang.org/issue/14851
+# ./patch-files/17847.patch https://golang.org/issue/17847
 COPY ./files/no-pic.patch /
-
-# https://golang.org/issue/17847
-COPY ./files/17847.patch /
 
 RUN apk add --no-cache ca-certificates \
     && apk update --no-cache \

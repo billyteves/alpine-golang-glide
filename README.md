@@ -6,13 +6,13 @@ NOTE: `latest` docker tag is now deprecated and will no longer be maintained. Ki
 `latest` tag is equivalent to tag `1.0.0`
 
 
-OFFICIAL DOCKER TAGS: 
+OFFICIAL DOCKER TAGS with Application Versions: 
 
-TAGS     | GoLang Version | Glide Version | Alpine Base Image Version
----      | ---      	  | ---           | ---
-1.1.0    | 1.7.3          | 0.12.3        | 3.5
-1.0.0    | 1.6.3          | 0.12.3        | 3.4
-latest   | 1.6.3          | 0.12.3        | 3.4
+TAGS     | GoLang | Glide   | GIT    | Alpine Base
+---      | ---    | ---     | ---    | ---
+1.1.0    | 1.7.3  | 0.12.3  | 2.11.1 | 3.5
+1.0.0    | 1.6.3  | 0.12.3  | 2.8.3  | 3.4
+latest   | 1.6.3  | 0.12.3  | 2.8.3  | 3.4 
 
 
 Build-and-Run on the fly. This image also supports cMake for Makefile

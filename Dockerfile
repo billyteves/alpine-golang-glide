@@ -22,13 +22,6 @@ RUN apk update --no-cache \
     go \
     glide \
 
-    # Cleanup
-    
-    && rm -rf /var/cache/apk/* \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /tmp/* \
-    && chmod +x /usr/local/bin/run-ssh \
-
     # Make directories
 
     && mkdir -p $GOPATH/bin \
@@ -36,7 +29,14 @@ RUN apk update --no-cache \
 
     # CHMOD
 
-    && chmod -R 777 $GOPATH 
+    && chmod -R 777 $GOPATH \
+
+    # Cleanup
+
+    && rm -rf /var/cache/apk/* \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* \
+    && chmod +x /usr/local/bin/run-ssh
 
 WORKDIR /go/src/app
 

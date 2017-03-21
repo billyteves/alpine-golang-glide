@@ -5,8 +5,8 @@ MAINTAINER Billy Ray Teves <billyteves@gmail.com>
 ENV GOLANG_VERSION      1.7.5
 ENV GOLANG_SRC_URL      https://golang.org/dl/go$GOLANG_VERSION.src.tar.gz
 ENV GOLANG_SRC_SHA256   4e834513a2079f8cbbd357502cccaac9507fd00a1efe672375798858ff291815
-ENV GOPATH	            /go
-ENV PATH 	            $GOPATH/bin:/usr/local/go/bin:$PATH
+ENV GOPATH              /go
+ENV PATH                $GOPATH/bin:/usr/local/go/bin:$PATH
 
 # ssh for glide
 COPY ./run-ssh /usr/local/bin/run-ssh
@@ -14,7 +14,7 @@ COPY ./run-ssh /usr/local/bin/run-ssh
 # Copy all the patch files
 # ./patch-files/no-pic.patch https://golang.org/issue/14851
 # ./patch-files/17847.patch https://golang.org/issue/17847
-COPY ./files/no-pic.patch /
+COPY ./patch-files /
 
 RUN apk add --no-cache ca-certificates \
     && apk update --no-cache \

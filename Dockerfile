@@ -46,6 +46,7 @@ RUN set -ex \
     git \
     make \
     glide \
+    tzdata \
 
     # Make directories
 
